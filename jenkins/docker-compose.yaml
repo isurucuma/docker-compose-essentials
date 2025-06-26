@@ -18,7 +18,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: jenkins-blueocean
+    container_name: jenkins
     depends_on:
       - jenkins-docker
     networks:
@@ -37,7 +37,17 @@ services:
 
 volumes:
   jenkins-docker-certs:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${JENKINS_HOME_PATH}/docker-certs
+      o: bind
   jenkins-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${JENKINS_HOME_PATH}/data
+      o: bind
 
 networks:
   jenkins:
