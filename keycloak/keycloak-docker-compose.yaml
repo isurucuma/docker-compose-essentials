@@ -1,6 +1,6 @@
 services:
   keycloak_web:
-    image: quay.io/keycloak/keycloak:23.0.7
+    image: quay.io/keycloak/keycloak:26.4.0
     container_name: keycloak_web
     environment:
       KC_DB: postgres
@@ -25,7 +25,7 @@ services:
       - 8080:8080
 
   keycloakdb:
-    image: postgres:15
+    image: postgres:17
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
